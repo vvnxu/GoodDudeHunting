@@ -1,21 +1,29 @@
+<h1>Profile</h1>
+<div class='profile'>
+	<p>Username: <%= @user.name %></p>
+	<p>Email: <%= @user.email %></p>
+</div>
+
+<h1>History</h1>
 <div class='reqested'>
 	<h2>Requests</h2>
-	<% @requested.each do |request|%>
-
-    <a href="/request/<%=request.id%>" >Request #<%=request.id %>
-	</a>
-
-	<h4>needs <%=request.amount%> <%=request.item%> </h4>
-
-	<p><%=request.acpt_story%></p>
-
+	<% @user.requests.each do |request|%>
+	<%#<% @requested.each do |request|%>
+    	<a href="/request/<%=request.id%>" >
+    		Request #<%=request.id %>
+		</a>
+		<h4>needs <%=request.amount%> <%=request.item%> </h4>
+		<p><%=request.acpt_story%></p>
+	<%end%>
 </div>
-<%end%>
 
 <div class='donated'>
 	<h2>Donations</h2>
-	<%@donations.each do |donation|%>
-	<h4>you donated:<%=donation.amount%> to</h4>
-	<a href="/request/<%=donation.request.id%>"><%= donation.request.acpt_story %></a>
+	<%@user.donations.each do |donation|%>
+	<%#<%@donations.each do |donation|%>
+		<h4>you donated:<%=donation.amount%> to</h4>
+		<a href="/request/<%=donation.request.id%>">
+			<%= donation.request.acpt_story %>
+		</a>
 	<%end%>
 </div>

@@ -2,7 +2,6 @@ require 'pry'
 require 'sinatra'
 require 'sinatra/reloader'
 require_relative "db_config"
-require_relative 'models/donate'
 require_relative 'models/donation'
 require_relative 'models/request'
 require_relative 'models/user'
@@ -22,7 +21,8 @@ get '/login' do
 end
 
 get '/request/new' do
-	@check=Donate.find_by(donator:session[:user_name])
+	@check=User.find(session[:user_id]).donations
+	# @check=Donate.find_by(donator:session[:user_name])
 
   	erb :request
 end
@@ -46,13 +46,13 @@ post '/donations' do
 		request_id: request.id
 	)
 
-	@donate=Donate.new
-	@donate.donator=session[:user_name]
-	@donate.request_id=request.id
-	@donate.donate_amt=params[:amount]
-	@donate.save
+	# @donate=Donate.new
+	# @donate.donator=session[:user_name]
+	# @donate.request_id=request.id
+	# @donate.donate_amt=params[:amount]
+	# @donate.save
 
-	redirect'/' 
+	redirect'/profile' 
 end
 
 post '/session' do
@@ -99,6 +99,7 @@ end
 post '/requests' do 
     request=Request.new
 	request.acceptor=session[:user_name]
+	request.acceptor_id=session[:user_id]
 	request.acpt_pic=params[:pic]
 	request.acpt_story=params[:story]
 	request.item=params[:item]
@@ -120,9 +121,10 @@ end
 
 get '/profile' do
 	@user=User.find(session[:user_id])
-	@requested=@user.requests
+	# @requested=@user.requests
+	# @donations=@user.donations
+
 	# @requested=Request.where(acceptor:session[:user_name])
-	@donations=@user.donations
 	# @donated=Donate.where(donator:session[:user])
 	erb :profile
 end

@@ -31,17 +31,20 @@ hr{
 	clear:both;
 }
 nav{
+	margin-bottom: 24px;
 	width:100%;
 }
-
+header form {
+	float: left;
+}
 header button{
 	display:inline-block;
-	float:left;
 }
 header h2{
 	display:inline-block;
-    float:left;
-	border-right:1px solid black
+	border-right:1px solid black;
+	padding-right: 20px;
+	margin-right: 20px;
 }
 .last{
 	border-right:none;
@@ -57,20 +60,22 @@ nav a{
 	font-style: italic;
 }
 .show{
-    font-size: 20px;
-	width:30%;
-	height:40%;
-	min-height: 350px;
-	border:2px solid grey;
-	margin: 20px;
-	display:inline-block;
-	overflow:hidden;
+	font-size: 20px;
+    width: 28%;
+    height: 40%;
+    min-height: 350px;
+    border: 2px solid grey;
+    margin: 20px;
+    display: inline-block;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
+    padding: 12px;
+    min-height: 520px;
 }
 .show p{
-line-height: 25px;
-min-height: 75px;
-
-
+	line-height: 25px;
+	min-height: 75px;
 }
 .show a{
 

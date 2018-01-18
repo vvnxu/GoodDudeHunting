@@ -19,14 +19,6 @@ CREATE TABLE donations (
 	amount INTEGER NOT NULL
 );
 
-
-CREATE TABLE donates(
-	id SERIAL PRIMARY KEY,
-	donator VARCHAR(100) NOT NULL,
-	request_id INTEGER NOT NULL,
-	donate_amt INTEGER NOT NULL
-);
-
 CREATE TABLE users(
 	id SERIAL PRIMARY KEY,
 	name VARCHAR (50) NOT NULL,

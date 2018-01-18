@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
 
 	has_secure_password
 
-	has_many:requests, foreign_key: "acceptor_id", source: :requests
+	has_many:requests, foreign_key: "acceptor_id"
 
 	has_many:donations, foreign_key: "donator_id"
 
