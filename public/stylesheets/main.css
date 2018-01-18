@@ -1,0 +1,120 @@
+
+body{
+	background-color: mistyrose
+	}
+	h1{
+	font-size: 50px;
+	margin:0px auto;
+	font-family: 'Sedgwick Ave Display', cursive;
+	display:inline-block;
+
+}
+.warn {
+	margin: 50px 20%;
+}
+.request {
+
+	text-align: center;
+
+	margin: 5% auto
+}
+
+header{
+	margin:25px auto;
+	text-align: center;
+}
+header img{
+	width:5%;
+
+}
+hr{
+	clear:both;
+}
+nav{
+	width:100%;
+}
+
+header button{
+	display:inline-block;
+	float:left;
+}
+header h2{
+	display:inline-block;
+    float:left;
+	border-right:1px solid black
+}
+.last{
+	border-right:none;
+}
+nav a{
+	color:black;
+	border-right: 2px solid black;
+    padding: 0 10%;
+    margin: 3% 2%;
+	font-size: 25px;
+	font-style: bold;
+	text-decoration: none;
+	font-style: italic;
+}
+.show{
+    font-size: 20px;
+	width:30%;
+	height:40%;
+	min-height: 350px;
+	border:2px solid grey;
+	margin: 20px;
+	display:inline-block;
+	overflow:hidden;
+}
+.show p{
+line-height: 25px;
+min-height: 75px;
+
+
+}
+.show a{
+
+	font-size:35px;
+	color:gold;
+}
+
+.show img{
+
+	width:auto;
+	height:240px;
+	text-align:center;
+	display: block;
+}
+
+img{
+	width:80%;
+	height:30%;
+	margin:0 auto;
+}
+.login{
+	font-size:20px;
+	text-align: center;
+	margin-top:20% ;
+	padding:30px;
+
+}
+.info{
+	display:inline-block;
+	width:35%;
+	margin:30px auto;
+}
+.donate{
+	font-size: 60px;
+	width:35%;
+	display:inline-block;
+	margin:30px auto;
+}
+.mall {
+	width:50%;
+	height:30%;
+
+}
+input{
+	padding:10px;
+	font-size:20px;
+}

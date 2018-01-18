@@ -1,0 +1,21 @@
+<div class='reqested'>
+
+	<% @requested.each do |request|%>
+
+    <a href="/request/<%=request.id%>" ><%=request
+</a>
+
+	<h2>needs <%=request.amount%> <%=request.item%> </h2>
+
+	<p><%=request.acpt_story%></p>
+
+</div>
+<%end%>
+
+<div class='donated'>
+
+	<%@donated.each do |donate|%>
+	<h2>you donated:<%=donate.donate_amt%> to</h2>
+	<a href="/request/<%=donate.request_id%>"></a>
+	<%end%>
+</div>

@@ -1,0 +1,26 @@
+<div class='info'>
+	
+<img class='small' src="<%=@info.acpt_pic%>" alt=""></div>
+
+<div class='donate'>
+<h1>Thanks 
+	<%=session[:user_name]%>, you're donating to 
+<%=@info.acceptor%>. </h1>
+
+
+<form action="/donations" method='post'>
+
+<input type="hidden" name='id' value='<%=@info.id%>'>
+ 
+ <label for="">
+	How much/many 
+	<%=@info.item%> are you donating to 
+	<%=@info.acceptor%>?
+</label><br>
+
+<input type="text" name='amount'>
+
+<button>DONATE NOW</button>
+
+</form>
+</div>

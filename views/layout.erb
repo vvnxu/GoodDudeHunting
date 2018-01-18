@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GoodDeedHunting</title>
+  <link rel='stylesheet' href='/stylesheets/main.css'>
+  <link href="https://fonts.googleapis.com/css?family=Sedgwick+Ave+Display" rel="stylesheet">
+</head>
+<body>
+<header>
+	<%if !session[:user_id]%>
+	 <form action="/login">
+
+	   <button>Login</button>
+	   
+	   </form>
+	
+	<%else%>
+
+	<form action="/session" method='post'>
+	
+	<input type="hidden" name="_method" value='delete'>
+
+ <h2>
+
+ 	logged in as 
+ 	<%= session[:user_name]%> 
+ </h2>
+
+	<button>Logout
+	</button>
+
+	</form>
+
+	<%end%>
+
+	<img src="https://upload.wikimedia.org/wikipedia/zh/1/19/G.d.h.-ologo.png" 
+	alt="">
+
+<h1>GOOD DEED HUNTING</h1>
+</header><hr>
+<nav>
+<a href="/">HOME</a>
+<a href="/request/new">NEED HELP</a>
+<a class ="last" href="/profile">HISTORY</a>
+</nav>
+
+  <%= yield %>
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+<div class='show'>
+<h2>Requester '<%=@request.acceptor%>'' is not changeable</h2>
+<form action="/request/<%=@request.id%>"method='post' > 
+<input type="hidden" name='_method' value="put">
+
+<label for=""><%=@request.item%></label>
+<input type="text" name='item' placeholder="new item"><br>
+<label><%=@request.amount%></label>
+<input type="text" name='amount' placeholder="new amount"><br>
+<label for="">edit your story</label>
+<input type="text" name='story' value="<%=@request.acpt_story%>"><br>
+<label for="">new image</label>
+	<input type="text" name='pic'><img src="<%=@request.acpt_pic%>" alt=""><br>
+	<button>Submit</button>
+</form>
+</div>

@@ -1,0 +1,35 @@
+
+<div class= 'login'>
+	<form action="/session" method="post">
+		<label for="email"> 
+		 EMAIL 
+		</label>
+		<input type="text" name="email">
+
+		<label for="">
+		PASSWORD
+		</label>
+		<input type="password" name="password">
+
+	<% if @redirect_to_id %>
+	<input type="hidden" name="redirect" value= "/donate/<%= @redirect_to_id %>">
+		<% end %>
+	    
+		<button >
+		Login
+		</button>
+	</form>
+
+	<form action="/signups" method="post">
+	<p>
+	Dont have an account yet?
+	</p>
+	<input type="text" name='name' placeholder="Your name">
+    <input type="text" name='email' placeholder="EMAIL">
+    <input type="password" name='password' placeholder="PASSWORD">
+	<button>sign up</button>
+	</form>
+
+</div>
+
+	
