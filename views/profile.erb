@@ -1,11 +1,11 @@
 <div class='reqested'>
-
+	<h2>Requests</h2>
 	<% @requested.each do |request|%>
 
-    <a href="/request/<%=request.id%>" ><%=request %>
+    <a href="/request/<%=request.id%>" >Request #<%=request.id %>
 	</a>
 
-	<h2>needs <%=request.amount%> <%=request.item%> </h2>
+	<h4>needs <%=request.amount%> <%=request.item%> </h4>
 
 	<p><%=request.acpt_story%></p>
 
@@ -13,9 +13,9 @@
 <%end%>
 
 <div class='donated'>
-
-	<%@donated.each do |donate|%>
-	<h2>you donated:<%=donate.donate_amt%> to</h2>
-	<a href="/request/<%=donate.request_id%>"></a>
+	<h2>Donations</h2>
+	<%@donations.each do |donation|%>
+	<h4>you donated:<%=donation.amount%> to</h4>
+	<a href="/request/<%=donation.request.id%>"><%= donation.request.acpt_story %></a>
 	<%end%>
 </div>

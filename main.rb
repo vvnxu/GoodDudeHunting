@@ -3,6 +3,7 @@ require 'sinatra'
 require 'sinatra/reloader'
 require_relative "db_config"
 require_relative 'models/donate'
+require_relative 'models/donation'
 require_relative 'models/request'
 require_relative 'models/user'
 
@@ -39,6 +40,12 @@ end
 
 post '/donations' do
 	request=Request.find(params[:id])
+	@user=User.find(session[:user_id])
+	@user.donations.create(
+		amount: params[:amount],
+		request_id: request.id
+	)
+
 	@donate=Donate.new
 	@donate.donator=session[:user_name]
 	@donate.request_id=request.id
@@ -112,8 +119,11 @@ delete '/request/:id' do
 end
 
 get '/profile' do
-	@requested=Request.where(acceptor:session[:user_name])
-	@donated=Donate.where(donator:session[:user])
+	@user=User.find(session[:user_id])
+	@requested=@user.requests
+	# @requested=Request.where(acceptor:session[:user_name])
+	@donations=@user.donations
+	# @donated=Donate.where(donator:session[:user])
 	erb :profile
 end
 
