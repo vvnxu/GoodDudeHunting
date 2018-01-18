@@ -1,6 +1,6 @@
 require 'pry'
 require 'sinatra'
-require 'sinatra/reloader'
+# require 'sinatra/reloader'
 require_relative "db_config"
 require_relative 'models/donate'
 require_relative 'models/request'
@@ -111,7 +111,6 @@ post '/requests' do
 end
 put "edit/:id" do
 	@request=Request.find(params[:id])
-
 
 	end
 
