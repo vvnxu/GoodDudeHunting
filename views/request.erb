@@ -1,21 +1,22 @@
-<%if @check%>
+<%if @check %>
 <div class ='request'>
-<form  action="/requests" method='post' >
-<label for="">picture URL</label>
-<input type="text" name='pic'><br><br><br>
-<label for="">tell us why you need help.</label>
-<input type="text" name='story'><br><br><br>
-<label for="">what do you need?</label>
-<input type="text" name='item'><br><br><br>
-<label for="">How much/many do you need?</label>
-<input type="text" name='amount'>
-<br><br><br>
-<button>Submit</button>
-</form>
+	<form  action="/requests" method='post' >
+	<label for="">picture URL</label>
+	<input type="text" name='pic'><br><br><br>
+	<label for="">tell us why you need help.</label>
+	<input type="text" name='story'><br><br><br>
+	<label for="">what do you need?</label>
+	<input type="text" name='item'><br><br><br>
+	<label for="">How much/many do you need?</label>
+	<input type="text" name='amount'>
+	<br><br><br>
+	<button>Submit</button>
+	</form>
 </div>
+
 <%else%>
-<h1 class='warn'>you must donate first to make a request</h1>
 <form action="/">
+<h1 class='warn'>you must donate first to make a request</h1>
 <button>DONATE</button>
 </form>
 <%end%>

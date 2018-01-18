@@ -1,27 +1,30 @@
 
 <%@requests.each do |request|%>
-
 <div class='show'>
 
     <a href="/request/<%=request.id%>" >
-	<%=request.acceptor%>
-</a>
+		<%=request.acceptor%>
+	</a>
 
-	<h2>needs <%=request.amount%> <%=request.item%> </h2>
+	<h2>
+		needs <%=request.amount%> <%=request.item%>
+	</h2>
 
 	<p><%=request.acpt_story%></p>
 
 	<img src="<%=request.acpt_pic%>" alt="">
 
 	<%if request.acceptor==session[:user_name]%>
-	
-	<form action="/edit/<%=request.id%> method="post">
-		<input type="hidden" name="_method" value='put'>
-		<button>Edit</button>
-	</form>
-	<form action="/request/<%=request.id%>" method="post">
-		<input type="hidden" name="_method" value="delete">
-		<button>Delete</button>
-	</form>
-<%end%>
+		<form action="/edit/<%=request.id%>" method="post">
+			<input type="hidden" name="_method" value='put'>
+			<button>Edit</button>
+		</form>
+
+		<form action="/request/<%=request.id%>" method="post">
+			<input type="hidden" name="_method" value="delete">
+			<button>Delete</button>
+		</form>
+	<% end %>
+
 </div>
+<%end%>

@@ -1,6 +1,6 @@
 require 'pry'
 require 'sinatra'
-# require 'sinatra/reloader'
+require 'sinatra/reloader'
 require_relative "db_config"
 require_relative 'models/donate'
 require_relative 'models/request'
@@ -12,7 +12,6 @@ get '/' do
   @requests = Request.all
   
   erb :index
-
 end
 
 get '/login' do
@@ -23,6 +22,7 @@ end
 
 get '/request/new' do
 	@check=Donate.find_by(donator:session[:user_name])
+
   	erb :request
 end
 
@@ -35,7 +35,6 @@ get '/request/:id' do
 	end
 
 	erb :donate
-
 end
 
 post '/donations' do
@@ -49,34 +48,25 @@ post '/donations' do
 	redirect'/' 
 end
 
-
 post '/session' do
 	user=User.find_by(email: params[:email])
-	if 
-	user && user.authenticate(params[:password])
-	session[:user_id]=user.id
-
-	session[:user_name]=user.name
+	if user && user.authenticate(params[:password])
+		session[:user_id]=user.id
+		session[:user_name]=user.name
 
 		if session[:redirect_to_id]
-		redirect "/request/#{session[:redirect_to_id]}"
+			redirect "/request/#{session[:redirect_to_id]}"
 		else
 			redirect '/'
 		end
-
-
     else
-
     	erb :login
 	end
-	
 end
 
 delete '/session' do
-
 	session[:user_id]=nil
 	session[:user_name]=nil
-
 
 	redirect '/'
 end
@@ -87,13 +77,14 @@ post '/signups' do
 	user.password=params[:password]
 	user.name=params[:name]
 	user.save
+
+	session[:user_id]=user.id
 	session[:user_name]=user.name
 
 	if session[:redirect_to_id]
-
-	redirect "/request/#{session[:redirect_to_id]}"
+		redirect "/request/#{session[:redirect_to_id]}"
 	else
-			redirect '/'
+		redirect '/'
 	end
 end
 
@@ -109,16 +100,16 @@ post '/requests' do
 
 	redirect '/profile'
 end
-put "edit/:id" do
+
+put "/edit/:id" do
 	@request=Request.find(params[:id])
+end
 
-	end
-
-delete 'request/:id' do
+delete '/request/:id' do
 	request=Request.find(params[:id]).destroy
 	request.save
 	redirect '/profile'
-	end
+end
 
 get '/profile' do
 	@requested=Request.where(acceptor:session[:user_name])
