@@ -1,6 +1,10 @@
 
 <div class= 'login'>
 	<form action="/session" method="post">
+		<% if @redirect_to_id %>
+			<input type="hidden" name="redirect" value= "/donate/<%= @redirect_to_id %>">
+		<% end %>
+	    
 		<label for="email"> 
 		 EMAIL 
 		</label>
@@ -11,10 +15,6 @@
 		</label>
 		<input type="password" name="password">
 
-		<% if @redirect_to_id %>
-			<input type="hidden" name="redirect" value= "/donate/<%= @redirect_to_id %>">
-		<% end %>
-	    
 		<button >
 		Login
 		</button>

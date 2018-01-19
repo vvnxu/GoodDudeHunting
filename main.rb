@@ -8,35 +8,63 @@ require_relative 'models/user'
 
 enable :sessions
 
+
+
 get '/' do
+
   @requests = Request.all
   
   erb :index
 end
 
 get '/login' do
+
 	@redirect_to_id = session[:redirect_to_id]
 
 	erb :login
+
 end
 
 get '/request/new' do
-	@check=User.find(session[:user_id]).donations
-	# @check=Donate.find_by(donator:session[:user_name])
+	if session[:user_id]
 
-  	erb :request
+	# @check=User.find(session[:user_id]).donations.
+	 	
+	@check=Donation.find_by(donator_id:session[:user_id])
+	erb :request
+	else
+		redirect '/login'
+
+    end
+end
+
+post '/requests' do 
+    request=Request.new
+	request.acceptor=session[:user_name]
+	request.acceptor_id=session[:user_id]
+	request.acpt_pic=params[:pic]
+	request.acpt_story=params[:story]
+	request.item=params[:item]
+	request.amount=params[:amount]
+	request.save
+
+	redirect '/profile'
+
 end
 
 get '/request/:id' do
  	@info=Request.find(params[:id])
 
+
 	if !session[:user_id]
+
 		session[:redirect_to_id] = params[:id]
 		redirect '/login'
 	end
 
 	erb :donate
 end
+
 
 post '/donations' do
 	request=Request.find(params[:id])
@@ -71,7 +99,9 @@ post '/session' do
 	end
 end
 
+
 delete '/session' do
+
 	session[:user_id]=nil
 	session[:user_name]=nil
 
@@ -79,6 +109,7 @@ delete '/session' do
 end
 
 post '/signups' do
+
 	user=User.new
 	user.email=params[:email]
 	user.password=params[:password]
@@ -95,22 +126,22 @@ post '/signups' do
 	end
 end
 
+get "/edit/:id" do
 
-post '/requests' do 
-    request=Request.new
-	request.acceptor=session[:user_name]
-	request.acceptor_id=session[:user_id]
-	request.acpt_pic=params[:pic]
+	@request_obj=Request.find(params[:id])
+	erb :edit
+end
+
+put '/request/:id' do
+
+	request=Request.find(params[:id])
 	request.acpt_story=params[:story]
 	request.item=params[:item]
 	request.amount=params[:amount]
 	request.save
+	
+	redirect '/'
 
-	redirect '/profile'
-end
-
-put "/edit/:id" do
-	@request=Request.find(params[:id])
 end
 
 delete '/request/:id' do
@@ -120,6 +151,7 @@ delete '/request/:id' do
 end
 
 get '/profile' do
+	if session[:user_id]
 	@user=User.find(session[:user_id])
 	# @requested=@user.requests
 	# @donations=@user.donations
@@ -127,5 +159,8 @@ get '/profile' do
 	# @requested=Request.where(acceptor:session[:user_name])
 	# @donated=Donate.where(donator:session[:user])
 	erb :profile
+	else
+		redirect '/login'
+	end
 end
 

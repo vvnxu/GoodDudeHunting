@@ -26,9 +26,3 @@ CREATE TABLE users(
 	password_digest VARCHAR (300) NOT NULL
 );
 
-
-INSERT INTO users (acceptor,acpt_pic,acpt_story,item,amount) VALUES ('Frost Boy','http://cdn.manilatimes.net/wp-content/uploads/2018/01/Ice-Boy.jpeg','Wang Fuman, 8, Hewalks 2.8 miles through mountains and streams in -9 Celsius weather,until he reached the warmth of his third-grade classroom.He lives in extreme poverty','RMB',1000);
-
-https://github.com/vvnxu/gooddudehunting/raw/master/db.dump
-pg_dump -Fc --no-acl --no-owner -h localhost -U <vivien gooddeedhunting> db.dump
-heroku pg:backups:restore 'https://github.com/vvnxu/gooddudehunting/raw/master/db.dump' DATABASE_URL

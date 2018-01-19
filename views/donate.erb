@@ -1,7 +1,13 @@
 <div class='info'>
 	
-<img class='small' src="<%=@info.acpt_pic%>" alt=""></div>
+	<h2>
+		<%=@info.acceptor%> needs: <%=@info.amount%> <%=@info.item%>
+	</h2>
 
+	<p><%=@info.acpt_story%></p>
+
+	<img class='small' src="<%=@info.acpt_pic%>" alt="">
+</div>
 <div class='donate'>
 <h1>Thanks 
 	<%=session[:user_name]%>, you're donating to 

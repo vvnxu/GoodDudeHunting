@@ -3,27 +3,29 @@
 	<p>Username: <%= @user.name %></p>
 	<p>Email: <%= @user.email %></p>
 </div>
+<hr>
+<div class='wrapper'>
 
-<h1>History</h1>
-<div class='reqested'>
-	<h2>Requests</h2>
+<div class='requested'>
+	<h1>Your Requests</h1><br>
 	<% @user.requests.each do |request|%>
-	<%#<% @requested.each do |request|%>
-    	<a href="/request/<%=request.id%>" >
+
+    	<a href="/request/<%=request.id%>" > You started 
     		Request #<%=request.id %>
 		</a>
-		<h4>needs <%=request.amount%> <%=request.item%> </h4>
+		<h2>asking for <%=request.amount%> <%=request.item%> </h2>
 		<p><%=request.acpt_story%></p>
 	<%end%>
-</div>
+</div><hr>
 
 <div class='donated'>
-	<h2>Donations</h2>
+	<h1>Your Donations</h1><br>
 	<%@user.donations.each do |donation|%>
 	<%#<%@donations.each do |donation|%>
-		<h4>you donated:<%=donation.amount%> to</h4>
+	<h2>you donated:<%=donation.amount%> <%=donation.request.item%> to <%=donation.request.acceptor%></h2>
 		<a href="/request/<%=donation.request.id%>">
 			<%= donation.request.acpt_story %>
 		</a>
 	<%end%>
+</div>
 </div>

@@ -2,6 +2,7 @@
 body{
 	background-color: mistyrose
 	}
+	
 	h1{
 	font-size: 50px;
 	margin:0px auto;
@@ -119,7 +120,15 @@ img{
 	height:30%;
 
 }
+.showw{
+	margin-top:5%;
+	text-align: center;
+
+}
 input{
 	padding:10px;
 	font-size:20px;
+
+.button{
+	font-size:40px;
 }

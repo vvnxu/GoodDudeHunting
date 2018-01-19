@@ -3,7 +3,7 @@
 <div class='show'>
 
     <a href="/request/<%=request.id%>" >
-		<%=request.acceptor%>
+		Donate to: <%=request.acceptor%>
 	</a>
 
 	<h2>
@@ -15,8 +15,7 @@
 	<img src="<%=request.acpt_pic%>" alt="">
 
 	<%if request.acceptor==session[:user_name]%>
-		<form action="/edit/<%=request.id%>" method="post">
-			<input type="hidden" name="_method" value='put'>
+		<form action="/edit/<%=request.id%>" method="get">
 			<button>Edit</button>
 		</form>
 
@@ -24,7 +23,8 @@
 			<input type="hidden" name="_method" value="delete">
 			<button>Delete</button>
 		</form>
-	<% end %>
+	<%end%>
+
 
 </div>
 <%end%>
